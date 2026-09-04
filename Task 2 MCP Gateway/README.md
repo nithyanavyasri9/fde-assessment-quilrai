@@ -3,7 +3,7 @@
 ## Architecture
 
 ```
-AI Agent → [Gateway :9000] → [Downstream MCP Server :9001]
+AI Agent → [Gateway: 9000] → [Downstream MCP Server: 9001]
 ```
 
 ## Setup
@@ -74,7 +74,7 @@ curl -X POST http://localhost:9000/mcp `
 
 ## Differentiators
 
-- Structured audit log (`gateway_audit.log`) — every request logged with role, tool, outcome
+- Structured audit log (`gateway_audit.log`) - every request logged with role, tool, outcome
 - Request with no/bad token rejected before touching downstream
 - Unknown methods return -32601, never silently forwarded
 - Downstream timeouts return clean -32000, no raw stack traces
