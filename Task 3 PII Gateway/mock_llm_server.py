@@ -16,19 +16,17 @@ app = FastAPI(title="Mock LLM Server")
 
 # Test response containing all PII types, some spanning chunk boundaries
 # We split deliberately to test boundary crossing
+# Chunks are sized so PII spans boundaries but stays within the 50-char overlap window.
+# Each chunk is ~20-30 chars so the rolling buffer accumulates enough to catch splits.
 RESPONSE_CHUNKS = [
-    "Sure! Here are some customer details:\n\n",
-    "Customer: John Smith\n",
-    "Email: john.sm",           # email split across chunks
-    "ith@example.com\n",        # continuation
-    "SSN: 123-45",              # SSN split across chunks
-    "-6789\n",                  # continuation
-    "Phone: (555) 123-4567\n",
-    "Credit card: 4111 1111 ",  # CC split across chunks
-    "1111 1111\n",              # continuation
-    "Second customer: jane@doe.org\n",
-    "Her phone: 555.987.6543\n",
-    "Card on file: 5500-0000-0000-0004\n",
+    "Sure! Here are some customer details:\n",
+    "Customer: John Smith\nEmail: john.sm",    # email starts here
+    "ith@example.com\nSSN: 123-45",            # email ends, SSN starts
+    "-6789\nPhone: (555) 123-4567\n",          # SSN ends, phone complete
+    "Credit card: 4111 1111 1111 1111\n",      # CC complete in one chunk
+    "Second customer: jane@doe.org\n",          # email complete
+    "Her phone: 555.987.6543\n",               # phone complete
+    "Card on file: 5500-0000-0000-0004\n",     # card complete
     "\nLet me know if you need anything else!",
 ]
 

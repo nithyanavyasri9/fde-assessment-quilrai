@@ -200,26 +200,31 @@ async def stream_with_redaction(
                     if not line:
                         continue
 
-                    text = extract_text_from_sse_line(line)
-
-                    if text is None:
-                        # Pass through non-data lines (comments, [DONE], etc.)
-                        if line.strip() == "data: [DONE]":
-                            # Flush remaining buffer before sending DONE
-                            remaining = redactor.flush()
-                            if remaining:
-                                yield build_sse_line(remaining)
-                            log.info("Stream complete. Redactions: %s", redactor.summary)
-                            yield "data: [DONE]\n\n"
+                    # Detect [DONE] signal — flush buffer first
+                    if "[DONE]" in line:
+                        remaining = redactor.flush()
+                        if remaining:
+                            yield build_sse_line(remaining)
+                        log.info("Stream complete. Redactions: %s", redactor.summary)
+                        yield "data: [DONE]\n\n"
                         continue
 
-                    if text == "":
+                    text = extract_text_from_sse_line(line)
+
+                    if text is None or text == "":
                         continue
 
                     # Process through rolling buffer
                     safe_output = redactor.process_chunk(text)
                     if safe_output:
                         yield build_sse_line(safe_output)
+
+                # End-of-stream safety flush — catches any remaining buffer
+                # if [DONE] was missing or stream ended unexpectedly
+                remaining = redactor.flush()
+                if remaining:
+                    yield build_sse_line(remaining)
+                    log.info("End-of-stream flush. Redactions: %s", redactor.summary)
 
     except httpx2.TimeoutException:
         log.error("LLM endpoint timed out")
