@@ -1,8 +1,8 @@
-﻿# Task 3 — LLM Gateway Streaming PII Redaction
+﻿# Task 3 - LLM Gateway Streaming PII Redaction
 
 ## Setup
 @"
-# Task 3 — LLM Gateway Streaming PII Redaction
+# Task 3 - LLM Gateway Streaming PII Redaction
 
 ## Setup
 pip install -r requirements.txt
