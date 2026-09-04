@@ -14,7 +14,7 @@ python server.py
 ```
 
 The server listens on **stdin** for JSON-RPC messages and replies on **stdout**.
-All logs go to **stderr** — this is intentional and required by the assessment.
+All logs go to **stderr** assessment requirement
 
 ## Test Logic (without a running MCP client)
 
@@ -25,8 +25,6 @@ python test_server.py
 All test output goes to stderr (correct behavior).
 
 ## Verify STDIO Isolation
-
-This is the #1 thing assessors check:
 
 ```bash
 # Redirect stderr to /dev/null — stdout should be completely silent
@@ -71,6 +69,6 @@ If you see ANY output before sending a message → you have a stdout leak → fi
 ## Key Design Decisions
 
 1. **Pydantic v2 models** with `@field_validator` for custom regex checks
-2. **All logging via `logging` module pointed at `sys.stderr`** — zero `print()` calls
+2. **All logging via `logging` module pointed at `sys.stderr`** zero `print()` calls
 3. **`stdio_server()` from the MCP SDK** manages the transport layer
 4. **Validation before business logic** — schema errors caught first, then DB/API errors
