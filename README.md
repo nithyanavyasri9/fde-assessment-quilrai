@@ -1,4 +1,4 @@
-﻿# FDE Assessment — MCP & LLM Security Gateways
+﻿# FDE Assessment - MCP & LLM Security Gateways
 **QuilrAI · AI Solutions Engineer Assessment**
 
 ## Tasks
