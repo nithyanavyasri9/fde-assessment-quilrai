@@ -1,0 +1,420 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT\Task 4 Rate Limiter> python router.py
+[DEBUG] SQLite rate limiter initialized at rate_limiter.db
+[DEBUG] Using proactor: IocpProactor
+[INFO] Router starting — DB: rate_limiter.db, Primary: http://127.0.0.1:9400/v1/chat/completions, Fallback: http://127.0.0.1:9401/v1/chat/completions
+[DEBUG] tenant=tenant-live-1 tokens_requested=102
+[INFO] Calling primary model: tenant=tenant-live-1 tokens=102
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9676B200>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:17 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 281.0ms
+[DEBUG] tenant=tenant-live-2 tokens_requested=102
+[INFO] Calling primary model: tenant=tenant-live-2 tokens=102
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F96666D50>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 429, b'Too Many Requests', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'24'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[WARNING] primary returned 429 Too Many Requests
+[WARNING] Primary failed (429) — failing over to backup model
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9401 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F967E9580>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'234'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9401/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Fallback success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F96666D50>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682AD50>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682AE70>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682B290>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 31.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682AC60>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9676ABD0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 31.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F966F9E80>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 15.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682B980>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682B6E0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682B3E0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F967E8B00>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F96829490>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 15.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682ACF0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682B5F0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682AD80>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F96854380>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 15.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F968540B0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 32.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F96854950>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 15.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F968543E0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 16.0ms
+[DEBUG] tenant=tenant-flood tokens_requested=350
+[INFO] Calling primary model: tenant=tenant-flood tokens=350
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9400 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000022F9682B860>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:23:19 GMT'), (b'server', b'uvicorn'), (b'content-length', b'231'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9400/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[INFO] Primary success: 31.0ms

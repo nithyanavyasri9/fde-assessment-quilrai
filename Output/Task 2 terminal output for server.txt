@@ -1,0 +1,115 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT> cd "C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT\Task 2 MCP Gateway"
+PS C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT\Task 2 MCP Gateway> python gateway.py
+[INFO] Starting MCP Security Gateway on port 9000
+[INFO] Downstream MCP server expected at http://127.0.0.1:9001/mcp
+[DEBUG] Using proactor: IocpProactor
+[DEBUG] Incoming: method=tools/list id=1
+[WARNING] Auth failure: Missing Authorization header. Expected: Bearer <token>
+[DEBUG] Incoming: method=tools/list id=2
+[WARNING] Auth failure: Unknown or expired token. Access denied.
+[DEBUG] Incoming: method=tools/list id=3
+[DEBUG] Authenticated: role=viewer
+[DEBUG] Forwarding tools/list for role=viewer
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9001 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000011B67B6C800>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 19:26:01 GMT'), (b'server', b'uvicorn'), (b'content-length', b'323'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9001/mcp "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[DEBUG] Incoming: method=tools/list id=4
+[DEBUG] Authenticated: role=admin
+[DEBUG] Forwarding tools/list for role=admin
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9001 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000011B67D91F40>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 19:26:01 GMT'), (b'server', b'uvicorn'), (b'content-length', b'323'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9001/mcp "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[DEBUG] Incoming: method=tools/call id=5
+[DEBUG] Authenticated: role=viewer
+[INFO] Forwarding tools/call: tool=get_customer_record role=viewer
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9001 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000011B67EAC440>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 19:26:01 GMT'), (b'server', b'uvicorn'), (b'content-length', b'135'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9001/mcp "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[DEBUG] tools/call completed in 16.0ms
+[DEBUG] Incoming: method=tools/call id=6
+[DEBUG] Authenticated: role=viewer
+[WARNING] BLOCKED: role=viewer tool=admin_reset_key — Tool 'admin_reset_key' requires admin role. Your role 'viewer' is not authorized.
+[DEBUG] Incoming: method=tools/call id=7
+[DEBUG] Authenticated: role=viewer
+[WARNING] BLOCKED: role=viewer tool=admin_delete_account — Tool 'admin_delete_account' requires admin role. Your role 'viewer' is not authorized.
+[DEBUG] Incoming: method=tools/call id=8
+[DEBUG] Authenticated: role=admin
+[INFO] Forwarding tools/call: tool=admin_reset_key role=admin
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9001 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000011B67D91220>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 19:26:01 GMT'), (b'server', b'uvicorn'), (b'content-length', b'131'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9001/mcp "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[DEBUG] tools/call completed in 15.0ms
+[DEBUG] Incoming: method=tools/call id=9
+[DEBUG] Authenticated: role=admin
+[INFO] Forwarding tools/call: tool=admin_delete_account role=admin
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9001 local_address=None timeout=5.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x0000011B67D90C80>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 19:26:01 GMT'), (b'server', b'uvicorn'), (b'content-length', b'136'), (b'content-type', b'application/json')])
+[INFO] HTTP Request: POST http://127.0.0.1:9001/mcp "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+[DEBUG] tools/call completed in 16.0ms
+[DEBUG] Incoming: method=some/unknown id=10
+[DEBUG] Authenticated: role=admin
+[WARNING] Unknown method: some/unknown
+

@@ -1,0 +1,55 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT\Task 3 PII Gateway> python gateway.py
+[INFO] Starting PII Redaction Gateway on port 9200
+[INFO] Proxying to LLM at http://127.0.0.1:9100/v1/chat/completions
+[DEBUG] Using proactor: IocpProactor
+[INFO] Proxying request to LLM with PII redaction enabled
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9100 local_address=None timeout=30.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x00000202FFE54F80>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:08:38 GMT'), (b'server', b'uvicorn'), (b'cache-control', b'no-cache'), (b'content-type', b'text/event-stream; charset=utf-8'), (b'transfer-encoding', b'chunked')])
+[INFO] HTTP Request: POST http://127.0.0.1:9100/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] Redacted 1 SSN match(es)
+[DEBUG] Redacted 1 PHONE match(es)
+[DEBUG] Redacted 1 CREDIT_CARD match(es)
+[DEBUG] Redacted 1 EMAIL match(es)
+[DEBUG] Redacted 1 PHONE match(es)
+[INFO] Stream complete. Redactions: {'SSN': 1, 'PHONE': 2, 'CREDIT_CARD': 1, 'EMAIL': 1}
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete
+PS C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT\Task 3 PII Gateway> python gateway.py
+[INFO] Starting PII Redaction Gateway on port 9200
+[INFO] Proxying to LLM at http://127.0.0.1:9100/v1/chat/completions
+[DEBUG] Using proactor: IocpProactor
+[INFO] Proxying request to LLM with PII redaction enabled
+[DEBUG] connect_tcp.started host='127.0.0.1' port=9100 local_address=None timeout=30.0 socket_options=None
+[DEBUG] connect_tcp.complete return_value=<httpcore2._backends.anyio.AnyIOStream object at 0x000002169B6B5DC0>
+[DEBUG] send_request_headers.started request=<Request [b'POST']>
+[DEBUG] send_request_headers.complete
+[DEBUG] send_request_body.started request=<Request [b'POST']>
+[DEBUG] send_request_body.complete
+[DEBUG] receive_response_headers.started request=<Request [b'POST']>
+[DEBUG] receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Fri, 04 Sep 2026 20:09:55 GMT'), (b'server', b'uvicorn'), (b'cache-control', b'no-cache'), (b'content-type', b'text/event-stream; charset=utf-8'), (b'transfer-encoding', b'chunked')])
+[INFO] HTTP Request: POST http://127.0.0.1:9100/v1/chat/completions "HTTP/1.1 200 OK"
+[DEBUG] receive_response_body.started request=<Request [b'POST']>
+[DEBUG] Redacted 1 SSN match(es)
+[DEBUG] Redacted 1 PHONE match(es)
+[DEBUG] Redacted 1 CREDIT_CARD match(es)
+[DEBUG] Redacted 1 EMAIL match(es)
+[DEBUG] Redacted 1 PHONE match(es)
+[INFO] Stream complete. Redactions: {'SSN': 1, 'PHONE': 2, 'CREDIT_CARD': 1, 'EMAIL': 1}
+[DEBUG] receive_response_body.complete
+[DEBUG] response_closed.started
+[DEBUG] response_closed.complete
+[DEBUG] close.started
+[DEBUG] close.complete

@@ -1,0 +1,71 @@
+PS C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT> cd "C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT\Task 4 Rate Limiter"
+PS C:\Users\Lenovo\OneDrive\Desktop\FDE ASSESSMENT\Task 4 Rate Limiter> python test_router.py
+[DEBUG] SQLite rate limiter initialized at rate_limiter.db
+
+=== Task 4 Rate-Limiting & Fallback Router Tests ===
+
+-- SQLite Token Rate Limiter --
+[DEBUG] SQLite rate limiter initialized at test_rate_limiter.db
+-- Token Estimation --
+-- Error Response Format --
+-- Router Request Simulation --
+[DEBUG] tenant=tenant-sim-1 tokens_requested=102
+[INFO] Calling primary model: tenant=tenant-sim-1 tokens=102
+[INFO] Primary success: 15.0ms
+[DEBUG] tenant=tenant-sim-2 tokens_requested=102
+[INFO] Calling primary model: tenant=tenant-sim-2 tokens=102
+[WARNING] Primary failed (429) — failing over to backup model
+[INFO] Fallback success: 16.0ms
+[DEBUG] tenant=tenant-sim-3 tokens_requested=102
+[INFO] Calling primary model: tenant=tenant-sim-3 tokens=102
+[WARNING] Primary failed (timeout) — failing over to backup model
+[INFO] Fallback success: 0.0ms
+[DEBUG] tenant=tenant-sim-4 tokens_requested=102
+[INFO] Calling primary model: tenant=tenant-sim-4 tokens=102
+[WARNING] Primary failed (timeout) — failing over to backup model
+[DEBUG] tenant=tenant-sim-5 tokens_requested=350
+[WARNING] Rate limited: tenant=tenant-sim-5 used=50000 requested=350
+-- Audit Log --
+
+  ✓ PASS  First request allowed
+  ✓ PASS  Second request allowed (cumulative)
+  ✓ PASS  Usage accumulates correctly
+  ✓ PASS  Tenant B isolated from Tenant A
+  ✓ PASS  Request blocked when limit exceeded
+  ✓ PASS  Reset timestamp is in the future
+  ✓ PASS  Stats returns correct tenant
+  ✓ PASS  Stats shows tokens used
+  ✓ PASS  Stats shows tokens remaining
+  ✓ PASS  Stats shows limit
+  ✓ PASS  Small message estimates > 0 tokens
+  ✓ PASS  Large message estimates more tokens than small
+  ✓ PASS  Empty body returns > 0 tokens
+  ✓ PASS  Error has correct status 429
+  ✓ PASS  Error body has error.code
+  ✓ PASS  Error body has error.message
+  ✓ PASS  Error body has error.type
+  ✓ PASS  Retry-After header present
+  ✓ PASS  No stack trace in error body
+  ✓ PASS  No internal URL in error body
+  ✓ PASS  Primary success returns result
+  ✓ PASS  Primary success has no error key
+  ✓ PASS  Fallback used on primary 429
+  ✓ PASS  Fallback response has choices
+  ✓ PASS  Fallback used on primary timeout
+  ✓ PASS  Both fail returns 503
+  ✓ PASS  503 error code is upstream_unavailable
+  ✓ PASS  503 has no internal URLs
+  ✓ PASS  Rate limited returns 429
+  ✓ PASS  Rate limited has Retry-After header
+  ✓ PASS  Rate limit error code correct
+  ✓ PASS  Rate limit message mentions token count
+  ✓ PASS  router_audit.log -- 5 entries, all decision types present
+
+  33/33 tests passed
+
+  All tests passed! Task 4 complete.
+
+-- To test live --
+  Terminal 1: python mock_llm_servers.py
+  Terminal 2: python router.py
+  Terminal 3: powershell -ExecutionPolicy Bypass -File .\run_tests.ps1
