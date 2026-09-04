@@ -1,4 +1,4 @@
-# Task 1 — Custom MCP Server
+# Task 1 - Custom MCP Server
 
 ## Setup
 
